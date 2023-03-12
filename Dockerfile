@@ -6,6 +6,7 @@ ENV TZ="Asia/Taipei"
 COPY .mvn/ .mvn
 ADD mvnw mvnw.cmd pom.xml format.xml renovate.json ./
 COPY ./src ./src
+RUN chmod +x mvnw
 RUN ./mvnw clean package
 EXPOSE 8080
 CMD ["./mvnw", "cargo:run", "-P", "tomcat90"]
